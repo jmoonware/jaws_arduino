@@ -1,0 +1,6 @@
+
+Under File->Preferences, additional board manager url
+https://github.com/earlephilhower/arduino-pico/releases/download/global/package_rp2040_index.json
+
+Make sure to use Arduino IDE 2.0+ and "Editor Quick Suggestions" checked to true (off by default) to get something like Intellisense (since VS Code doesn't seem to support the libraries above...) 
+

@@ -76,12 +76,14 @@ void isr_audio() {
 
 void setup() {
 
+
   pinMode(PIN_LED_R, OUTPUT);
   pinMode(PIN_LED_G, OUTPUT);
   pinMode(PIN_LED_B, OUTPUT);
 
   digitalWrite(PIN_LED_R, HIGH); // HIGH turns off
   digitalWrite(PIN_LED_B, HIGH);
+
 
   gpio_set_function(audioPin, GPIO_FUNC_PWM);
 //  pinMode(irqPin, OUTPUT);
@@ -140,10 +142,13 @@ void setup() {
 
 void loop() {
 
-  digitalWrite(PIN_LED_G, HIGH);
-  delay(250);
   digitalWrite(PIN_LED_G, LOW);
   delay(250);
-  delay(10000);
+  digitalWrite(PIN_LED_G, HIGH);
+  delay(250);
+  digitalWrite(PIN_LED_B, LOW);
+  delay(250);
+  digitalWrite(PIN_LED_B, HIGH);
+  delay(250);
 
 }

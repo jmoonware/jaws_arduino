@@ -1,5 +1,5 @@
 //
-// Jaws header file generator - 2023-09-17 17:24:19.599489
+// Jaws header file generator - 2023-09-22 11:00:06.926371
 //
 // System Clock Freq = 133.0 MHz
 //
@@ -21,14 +21,14 @@
 #define MOTOR_TOP 55415
 #define MOTOR_DIV 48
 #define MOTOR_UPDATE 415
-// Audio file is h1.wav
-// Motion file is h1.txt
-// Ouput file is halloween.h
+// Audio file is ../raw/h1.wav
+// Motion file is ../raw/h1.txt
+// Ouput file is ../raw/jaws_include.h
 // Audio data = 693373 bytes
-// Motion data = 3156 bytes
-// Total Required Data Bytes = 696529
+// Motion data = 3336 bytes
+// Total Required Data Bytes = 696709
 #define AUDIO_SAMPLES 693373
-#define MOTOR_SAMPLES 1578
+#define MOTOR_SAMPLES 1668
 
 const uint8_t audio_buffer[693373] = {
 	117,
@@ -693405,7 +693405,7 @@ const uint8_t audio_buffer[693373] = {
 	117,
 	117};
 
-const uint16_t motor_buffer[1578] = {
+const uint16_t motor_buffer[1668] = {
 	3513,
 	3513,
 	3480,
@@ -694983,4 +694983,94 @@ const uint16_t motor_buffer[1578] = {
 	3747,
 	3659,
 	3583,
-	3494};
+	3494,
+	3390,
+	3377,
+	3406,
+	3568,
+	3568,
+	3379,
+	3265,
+	3188,
+	3238,
+	3276,
+	3302,
+	3327,
+	3353,
+	3378,
+	3416,
+	3470,
+	3524,
+	3565,
+	3488,
+	3524,
+	3709,
+	3955,
+	4162,
+	3784,
+	3450,
+	3175,
+	3148,
+	3203,
+	3258,
+	3312,
+	3367,
+	3422,
+	3476,
+	3531,
+	3586,
+	3641,
+	3429,
+	3135,
+	3094,
+	3052,
+	3007,
+	3007,
+	3030,
+	3147,
+	3264,
+	3381,
+	3472,
+	3549,
+	3531,
+	3495,
+	3428,
+	3445,
+	3497,
+	3479,
+	3453,
+	3412,
+	3341,
+	3255,
+	3129,
+	2997,
+	2853,
+	2770,
+	2717,
+	2775,
+	2822,
+	2844,
+	2701,
+	2476,
+	2701,
+	2831,
+	2768,
+	2809,
+	2903,
+	2962,
+	2954,
+	2806,
+	2655,
+	2502,
+	2600,
+	2703,
+	2807,
+	2950,
+	3117,
+	2856,
+	2726,
+	2933,
+	2964,
+	2892,
+	2820,
+	2747};

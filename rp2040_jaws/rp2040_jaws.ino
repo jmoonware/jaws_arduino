@@ -102,13 +102,8 @@ void isr_audio() {
 void setup_isr() {
   // reset repeat counter
   stop_after=0;
-  irqSlice = pwm_gpio_to_slice_num(irqPin);
-  // irqCounter; just generates an interrupt on every audio sample
   pwm_config irqConfig = pwm_get_default_config();
   pwm_config_set_wrap(&irqConfig, IRQ_TOP); // number of clock cycles to update audio values
-
-  // the irq counter will trigger the isr routine
-  irq_add_shared_handler(PWM_IRQ_WRAP, isr_audio,PICO_SHARED_IRQ_HANDLER_DEFAULT_ORDER_PRIORITY);
   pwm_init(irqSlice, &irqConfig, true);
   pwm_set_chan_level(irqSlice, 0, 100); // just something to look at on scope
   irq_set_enabled(PWM_IRQ_WRAP, true);
@@ -169,6 +164,8 @@ void setup() {
   pwm_init(motorSlice, &motorConfig, true);
   pwm_set_chan_level(motorSlice, 0, 4000);
   pwm_set_clkdiv_int_frac(motorSlice, MOTOR_DIV, 0);
+
+  irq_add_shared_handler(PWM_IRQ_WRAP, isr_audio,PICO_SHARED_IRQ_HANDLER_DEFAULT_ORDER_PRIORITY);
 
   pwm_set_irq_enabled(audioSlice,false);
   pwm_clear_irq(audioSlice);

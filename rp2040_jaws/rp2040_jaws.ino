@@ -162,7 +162,7 @@ void setup() {
   pwm_set_chan_level(audioSlice, 0, 100);
 
   pwm_init(motorSlice, &motorConfig, true);
-  pwm_set_chan_level(motorSlice, 0, 4000);
+  pwm_set_chan_level(motorSlice, 0, 3000);
   pwm_set_clkdiv_int_frac(motorSlice, MOTOR_DIV, 0);
 
   irq_add_shared_handler(PWM_IRQ_WRAP, isr_audio,PICO_SHARED_IRQ_HANDLER_DEFAULT_ORDER_PRIORITY);

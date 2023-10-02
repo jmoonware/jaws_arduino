@@ -181,6 +181,7 @@ void setup() {
 
 elapsedMillis delay_millis;
 uint32_t delay_between_performances = 5000; // ms
+uint32_t music_pulse_width = 500; // ms
 
 void loop() {
 
@@ -203,16 +204,22 @@ void loop() {
       }
       else {
         machineState=OPENING_STATE;
+        delay_millis=0;
         break;
       }
     case OPENING_STATE: // run until open limit switch is activated
       if (openLimitState == HIGH) {
+        if (delay_millis < music_pulse_width) { 
+          digitalWrite(musicEnablePin, HIGH);
+        }
+        else {
+          digitalWrite(musicEnablePin, LOW);
+        }
         digitalWrite(PIN_LED_G, LOW);
         delay(50);
         digitalWrite(PIN_LED_G, HIGH);
-        delay(250);
+        delay(50);
         digitalWrite(motorControlPin, HIGH);
-        digitalWrite(musicEnablePin, HIGH);
         break;
       }
       else {
@@ -264,6 +271,8 @@ void loop() {
       }
       else {
         machineState = OPENING_STATE; // start over!
+        delay_millis=0;
+        break;
       }
     default: // this is an error state - should not hit this ever
       digitalWrite(PIN_LED_R, LOW);

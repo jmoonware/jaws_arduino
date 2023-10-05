@@ -45,6 +45,7 @@ uint8_t closeLimitState;
 // state machine
 enum states {
  INITIAL_STATE,
+ WAIT_STATE,
  HOMING_STATE,
  OPENING_STATE,
  SPEECH_STATE,
@@ -189,7 +190,6 @@ void loop() {
   openLimitState = digitalRead(limitOpenPin);
   closeLimitState = digitalRead(limitClosePin);
 
-
   switch(machineState) {
     case INITIAL_STATE: // initially run until open limit switch is activated
       if (openLimitState == HIGH) {
@@ -203,6 +203,24 @@ void loop() {
         delay(50);
         digitalWrite(PIN_LED_B, HIGH);
         digitalWrite(motorControlPin, HIGH);
+        digitalWrite(musicEnablePin, LOW);
+        break;
+      }
+      else {
+        machineState=WAIT_STATE;
+        delay_millis=0;
+        break;
+      }
+
+	case WAIT_STATE: // waiting for manual close
+      if (closeLimitState == HIGH) {
+        digitalWrite(PIN_LED_R, LOW);
+        digitalWrite(PIN_LED_G, LOW);
+        delay(50);
+        digitalWrite(PIN_LED_R, HIGH);
+        digitalWrite(PIN_LED_G, HIGH);
+        delay(50);
+        digitalWrite(motorControlPin, LOW);
         digitalWrite(musicEnablePin, LOW);
         break;
       }
